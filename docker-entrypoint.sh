@@ -11,11 +11,8 @@ if [ ! -f .env ]; then
     for var in APP_NAME APP_ENV APP_DEBUG APP_URL DB_CONNECTION DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD SESSION_DRIVER CACHE_STORE QUEUE_CONNECTION LOG_CHANNEL; do
         val="${!var}"
         [ -z "$val" ] && continue
-        case "$var" in
-            APP_URL) sed -i "s|APP_URL=.*|APP_URL=$val|" .env ;;
-            APP_KEY) ;;
-            *) sed -i "s/^#$var=.*/$var=$val/; s/^$var=.*/$var=$val/" .env ;;
-        esac
+        [ "$var" = "APP_KEY" ] && continue
+        sed -i "s|^# *$var=.*|$var=$val|; s|^$var=.*|$var=$val|" .env
     done
 fi
 
