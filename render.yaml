@@ -5,6 +5,8 @@ services:
     dockerfilePath: ./Dockerfile
     plan: free
     envVars:
+      - key: APP_NAME
+        value: R.G. Ambulance Service
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
@@ -47,4 +49,5 @@ services:
 databases:
   - name: rg-ambulance-db
     plan: free
-    type: mysql
+    databaseType: mysql
+    ipAllowList: []

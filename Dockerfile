@@ -36,7 +36,7 @@ RUN composer install --optimize-autoloader --no-dev --no-interaction
 # Install and build frontend assets
 RUN npm install && npm run build
 
-# Configure Apache document root
+# Configure Apache document root to public/
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf \
     && sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/apache2.conf \
     && sed -i 's|<Directory /var/www/html>|<Directory /var/www/html/public>|g' /etc/apache2/apache2.conf
@@ -45,12 +45,14 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
 RUN chown -R www-data:www-data storage bootstrap/cache public/storage \
     && chmod -R 775 storage bootstrap/cache
 
-# Optimize Laravel for production
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache \
-    && php artisan event:cache
+# Clean up unneeded files
+RUN rm -rf node_modules .git tests backup-php docker-compose.yml
+
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 80
 
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
