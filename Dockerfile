@@ -44,7 +44,7 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
     && sed -i 's|<Directory /var/www/html>|<Directory /var/www/html/public>|g' /etc/apache2/apache2.conf
 
 # Laravel storage & bootstrap cache permissions
-RUN chown -R www-data:www-data storage bootstrap/cache public/storage \
+RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
 # Clean up unneeded files
