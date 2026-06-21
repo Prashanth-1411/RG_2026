@@ -12,14 +12,14 @@ if [ ! -f .env ]; then
         val="${!var}"
         [ -z "$val" ] && continue
         [ "$var" = "APP_KEY" ] && continue
+        # Quote values with spaces to avoid dotenv parse errors
+        case "$val" in *\ *) val="\"$val\"" ;; esac
         sed -i "s|^# *$var=.*|$var=$val|; s|^$var=.*|$var=$val|" .env
     done
 fi
 
-# Generate or set APP_KEY
-if [ -n "$APP_KEY" ]; then
-    sed -i "s|APP_KEY=.*|APP_KEY=$APP_KEY|" .env
-elif ! grep -q "APP_KEY=base64" .env 2>/dev/null; then
+# Generate APP_KEY if not already set
+if ! grep -q "APP_KEY=base64" .env 2>/dev/null; then
     php artisan key:generate --force
 fi
 
