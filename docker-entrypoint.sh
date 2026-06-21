@@ -6,25 +6,27 @@ cd /var/www/html
 # Create .env from template if missing
 if [ ! -f .env ]; then
     cp .env.example .env
-
-    # Override with environment variables
-    for var in APP_NAME APP_ENV APP_DEBUG APP_URL DB_CONNECTION DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD SESSION_DRIVER CACHE_STORE QUEUE_CONNECTION LOG_CHANNEL; do
-        val="${!var}"
-        [ -z "$val" ] && continue
-        [ "$var" = "APP_KEY" ] && continue
-        # Quote values with spaces to avoid dotenv parse errors
-        case "$val" in *\ *) val="\"$val\"" ;; esac
-        sed -i "s|^# *$var=.*|$var=$val|; s|^$var=.*|$var=$val|" .env
-    done
 fi
 
-# Unset APP_KEY from env so Laravel uses the .env value, not Render's injected env var
+# Always apply environment variable overrides
+for var in APP_NAME APP_ENV APP_DEBUG APP_URL DB_CONNECTION DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD SESSION_DRIVER CACHE_STORE QUEUE_CONNECTION LOG_CHANNEL; do
+    val="${!var}"
+    [ -z "$val" ] && continue
+    [ "$var" = "APP_KEY" ] && continue
+    case "$val" in *\ *) val="\"$val\"" ;; esac
+    sed -i "s|^# *$var=.*|$var=$val|; s|^$var=.*|$var=$val|" .env
+done
+
+# Unset APP_KEY from env so Laravel uses the .env value
 unset APP_KEY
 
 # Generate APP_KEY if not already set
 if ! grep -q "APP_KEY=base64" .env 2>/dev/null; then
     php artisan key:generate --force
 fi
+
+# Clear stale cache
+rm -rf bootstrap/cache/*.php
 
 # Wait for database and run migrations
 if [ -n "$DB_HOST" ]; then
