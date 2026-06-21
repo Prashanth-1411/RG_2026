@@ -1,4 +1,4 @@
-FROM php:8.2-apache AS base
+FROM php:8.4-apache AS base
 
 # System dependencies
 RUN apt-get update && apt-get install -y \
@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     libpq-dev \
+    libicu-dev \
     zip \
     unzip \
     nodejs \
@@ -17,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # PHP extensions
-RUN docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd zip
+RUN docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd zip intl
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
