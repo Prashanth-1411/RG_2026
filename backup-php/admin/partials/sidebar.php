@@ -76,6 +76,9 @@ $is_active = fn($pages) => in_array($current_page, (array)$pages) || in_array($c
             </li>
             
             <li class="nav-label">System</li>
+            <li class="<?= $is_active(['footer-settings.php']) ? 'active' : '' ?>">
+                <a href="<?= BASE_URL ?>/admin/pages/footer-settings.php"><i class="ti ti-layout"></i><span>Footer Settings</span></a>
+            </li>
             <li class="<?= $is_active(['settings.php']) ? 'active' : '' ?>">
                 <a href="<?= BASE_URL ?>/admin/pages/settings.php"><i class="ti ti-settings"></i><span>Settings</span></a>
             </li>
