@@ -1,0 +1,23 @@
+// Premium healthcare brand tokens
+$primary: #0A1628;
+$secondary: #1A365D;
+$accent: #C9A227;
+$bg: #FAFAF8;
+$text: #2D3748;
+$heading: #0A1628;
+
+$font-body: var(--rg-body-font, 'Outfit', sans-serif);
+$font-heading: var(--rg-heading-font, 'Cormorant Garamond', serif);
+
+$radius: var(--rg-radius, 16px);
+$btn-radius: var(--rg-btn-radius, 8px);
+$container: var(--rg-container, 1320px);
+$transition: var(--rg-transition, 0.7s);
+
+$shadow-sm: 0 4px 16px rgba(10, 22, 40, 0.08);
+$shadow-md: 0 12px 40px rgba(10, 22, 40, 0.12);
+$shadow-lg: 0 24px 80px rgba(10, 22, 40, 0.16);
+$shadow-gold: 0 8px 32px rgba(201, 162, 39, 0.3);
+
+$section-py: clamp(0.75rem, 1.5vw, 1.25rem);
+$section-px: clamp(1rem, 4vw, 2rem);

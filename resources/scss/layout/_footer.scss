@@ -1,0 +1,113 @@
+.rg-footer {
+  background: $primary;
+  color: rgba(255, 255, 255, 0.75);
+  padding-top: $section-py;
+
+  &__brand {
+    .footer-logo {
+      height: 52px;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-name {
+      @include heading-display;
+      font-size: 1.75rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 320px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 1.5rem;
+  }
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li { margin-bottom: 0.75rem; }
+
+    a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $accent;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+
+  &__contact {
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+
+      i {
+        color: $accent;
+        font-size: 1.1rem;
+        margin-top: 0.2rem;
+      }
+
+      span, a {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      a:hover { color: $accent; }
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+
+    a {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $accent;
+        border-color: $accent;
+        color: $primary;
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 4rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+
+    a {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+      &:hover { color: $accent; }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+.rg-about {
+  padding: $section-py 0;
+
+  &__image {
+    border-radius: $radius;
+    overflow: hidden;
+    position: relative;
+
+    img { @include image-cover; aspect-ratio: 4/5; }
+
+    .experience-badge {
+      position: absolute;
+      bottom: 2rem;
+      right: -1.5rem;
+      background: $accent;
+      color: $primary;
+      padding: 1.5rem 2rem;
+      border-radius: $radius;
+      text-align: center;
+      box-shadow: $shadow-gold;
+
+      .years {
+        @include heading-display;
+        font-size: 2.5rem;
+        line-height: 1;
+      }
+
+      .label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__timeline {
+    position: relative;
+    padding-left: 2rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba($accent, 0.3);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -2rem;
+        top: 0.5rem;
+        width: 12px;
+        height: 12px;
+        background: $accent;
+        border-radius: 50%;
+        transform: translateX(-5px);
+      }
+
+      .year {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: $accent;
+        letter-spacing: 0.1em;
+      }
+
+      .title {
+        @include heading-display;
+        font-size: 1.25rem;
+        margin: 0.25rem 0;
+      }
+    }
+  }
+
+  &__team {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+
+    .team-card {
+      text-align: center;
+
+      img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        border-radius: $radius;
+        margin-bottom: 1.25rem;
+      }
+
+      .name {
+        @include heading-display;
+        font-size: 1.25rem;
+      }
+
+      .role {
+        font-size: 0.85rem;
+        color: $accent;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

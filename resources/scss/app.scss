@@ -1,0 +1,46 @@
+// Abstracts
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Vendor
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'aos/dist/aos.css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
+
+// Base
+@import 'base/reset';
+@import 'base/typography';
+
+// Layout
+@import 'layout/header';
+@import 'layout/footer';
+
+// Components
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/badges';
+
+// Sections
+@import 'sections/hero';
+@import 'sections/page-hero';
+@import 'sections/stats';
+@import 'sections/services';
+@import 'sections/fleet';
+@import 'sections/equipment';
+@import 'sections/testimonials';
+@import 'sections/gallery';
+@import 'sections/faq';
+@import 'sections/cta';
+@import 'sections/about';
+@import 'sections/blog';
+@import 'sections/contact';
+@import 'sections/whatsapp';
+
+// Utilities
+@import 'utilities/animations';
+@import 'utilities/helpers';

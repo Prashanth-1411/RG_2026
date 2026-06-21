@@ -1,0 +1,67 @@
+.rg-contact {
+  padding: $section-py 0;
+
+  &__info {
+    background: $primary;
+    color: #fff;
+    border-radius: $radius;
+    padding: 3rem;
+    height: 100%;
+
+    .info-item {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+
+      .icon-wrap {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($accent, 0.15);
+        border-radius: $radius;
+        color: $accent;
+        flex-shrink: 0;
+      }
+
+      h6 {
+        font-family: $font-body;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $accent;
+        margin-bottom: 0.25rem;
+      }
+
+      p, a {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.95rem;
+        margin: 0;
+      }
+
+      a:hover { color: $accent; }
+    }
+  }
+
+  &__form-wrap {
+    background: #fff;
+    border-radius: $radius;
+    padding: 3rem;
+    box-shadow: $shadow-md;
+  }
+
+  &__map {
+    margin-top: 4rem;
+    border-radius: $radius;
+    overflow: hidden;
+    aspect-ratio: 21/9;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+}

@@ -1,0 +1,125 @@
+.rg-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: $primary;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+
+    img, video {
+      @include image-cover;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba($primary, 0.92) 0%,
+        rgba($secondary, 0.75) 50%,
+        rgba($primary, 0.85) 100%
+      );
+    }
+  }
+
+  &__swiper {
+    position: absolute;
+    inset: 0;
+
+    .swiper-slide {
+      position: relative;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 0 3rem;
+    color: #fff;
+  }
+
+  &__badge {
+    @extend .rg-badge;
+    margin-bottom: 2rem;
+    background: rgba($accent, 0.15);
+    border-color: rgba($accent, 0.3);
+  }
+
+  &__title {
+    @include heading-display;
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    color: #fff;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  &__subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    z-index: 3;
+    display: flex;
+    gap: 0.75rem;
+
+    button {
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: $accent;
+        border-color: $accent;
+        color: $primary;
+      }
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    animation: scrollBounce 2s ease infinite;
+
+    i { display: block; margin-top: 0.5rem; font-size: 1.2rem; }
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}

@@ -1,0 +1,53 @@
+@mixin glass($opacity: 0.85) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin heading-display {
+  font-family: $font-heading;
+  font-weight: 600;
+  color: $heading;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+@mixin section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $accent;
+
+  &::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: $accent;
+  }
+}
+
+@mixin card-hover {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin container-premium {
+  max-width: $container;
+  margin-inline: auto;
+  padding-inline: $section-px;
+}

@@ -1,0 +1,66 @@
+@extends('admin.layouts.master')
+
+@section('title', 'Create Sister Concern')
+@section('page-title', 'Create Sister Concern')
+
+@section('content')
+<div class="bg-white rounded-xl border border-gray-200 p-6 max-w-3xl">
+        <form action="{{ route('admin.sister_concerns.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="space-y-5">
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Company Name</label>
+                <input type="text" name="company_name" value="{{ old('company_name') }}" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:border-transparent outline-none transition-all @error('company_name') border-red-500 @enderror">
+                @error('company_name') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Logo</label>
+                <input type="text" name="logo" value="{{ old('logo') }}" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:border-transparent outline-none transition-all @error('logo') border-red-500 @enderror">
+                @error('logo') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
+                <textarea name="description" rows="4" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:border-transparent outline-none transition-all @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
+                @error('description') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Website Link</label>
+                <input type="text" name="website_link" value="{{ old('website_link') }}" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:border-transparent outline-none transition-all @error('website_link') border-red-500 @enderror">
+                @error('website_link') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Contact Phone</label>
+                <input type="text" name="contact_phone" value="{{ old('contact_phone') }}" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:border-transparent outline-none transition-all @error('contact_phone') border-red-500 @enderror">
+                @error('contact_phone') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Contact Email</label>
+                <input type="text" name="contact_email" value="{{ old('contact_email') }}" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:border-transparent outline-none transition-all @error('contact_email') border-red-500 @enderror">
+                @error('contact_email') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Sort Order</label>
+                <input type="number" name="sort_order" value="{{ old('sort_order') }}" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:border-transparent outline-none transition-all @error('sort_order') border-red-500 @enderror">
+                @error('sort_order') <p class="text-xs text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="flex items-center gap-2 pt-1">
+                <input type="hidden" name="status" value="0">
+                <input type="checkbox" name="status" value="1" {{ old('status') ? 'checked' : '' }} class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                <label class="text-sm font-semibold text-gray-700">Status</label>
+            </div>
+            </div>
+
+            <div class="flex items-center gap-3 pt-5 border-t border-gray-100 mt-6">
+                <button type="submit" class="px-6 py-2.5 text-white text-sm font-semibold rounded-lg transition-colors" style="background: var(--theme-primary);">Create</button>
+                <a href="{{ route('admin.sister_concerns.index') }}" class="px-6 py-2.5 text-gray-700 text-sm font-semibold rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">Cancel</a>
+            </div>
+        </form>
+</div>
+@endsection

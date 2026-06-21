@@ -1,0 +1,48 @@
+.rg-gallery {
+  padding: $section-py 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  &__item {
+    position: relative;
+    border-radius: $radius;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+
+    img {
+      @include image-cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba($primary, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+
+      i {
+        color: #fff;
+        font-size: 2rem;
+        transform: scale(0.8);
+        transition: transform 0.4s ease;
+      }
+    }
+
+    &:hover {
+      img { transform: scale(1.08); }
+      .gallery-overlay {
+        opacity: 1;
+        i { transform: scale(1); }
+      }
+    }
+  }
+}

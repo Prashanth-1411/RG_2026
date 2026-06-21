@@ -1,0 +1,49 @@
+h1, h2, h3, h4, h5, h6 {
+  @include heading-display;
+  margin-top: 0;
+}
+
+.display-1 {
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+.display-2 {
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+}
+
+.display-3 {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.lead-premium {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  color: rgba($text, 0.75);
+  font-weight: 300;
+}
+
+.text-accent {
+  color: $accent !important;
+}
+
+.text-muted-premium {
+  color: rgba($text, 0.6) !important;
+}
+
+.section-title {
+  @include heading-display;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  @include section-label;
+  margin-bottom: 1.25rem;
+}
+
+.section-desc {
+  max-width: 640px;
+  color: rgba($text, 0.7);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}

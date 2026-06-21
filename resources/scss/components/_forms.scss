@@ -1,0 +1,42 @@
+.rg-form {
+  .form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $heading;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-control,
+  .form-select {
+    border: 1px solid rgba($primary, 0.12);
+    border-radius: $radius;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: #fff;
+
+    &:focus {
+      border-color: $accent;
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+    }
+  }
+
+  textarea.form-control {
+    min-height: 160px;
+    resize: vertical;
+  }
+}
+
+.alert-rg {
+  border: none;
+  border-radius: $radius;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+
+  &-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+  }
+}

@@ -1,0 +1,250 @@
+.rg-card {
+  background: #fff;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  @include card-hover;
+  border: 1px solid rgba($accent, 0.06);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, $accent, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover::after { opacity: 1; }
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+
+    img {
+      @include image-cover;
+      transition: transform 0.8s ease;
+    }
+
+    .rg-card:hover & img { transform: scale(1.06); }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba($primary, 0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .rg-card:hover & .card-overlay { opacity: 1; }
+  }
+
+  &__body {
+    padding: var(--rg-card-padding, 32px);
+    position: relative;
+    z-index: 1;
+  }
+
+  &__icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba($accent, 0.12), rgba($accent, 0.04));
+    border-radius: $radius;
+    color: $accent;
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border: 1px solid rgba($accent, 0.08);
+
+    .rg-card:hover & {
+      background: linear-gradient(135deg, $accent, darken($accent, 8%));
+      color: #fff;
+      transform: scale(1.1) rotate(-3deg);
+      border-color: $accent;
+      box-shadow: 0 8px 24px rgba($accent, 0.3);
+    }
+  }
+
+  &__title {
+    @include heading-display;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__title--sm {
+    font-size: 1.15rem;
+  }
+
+  &__text {
+    color: rgba($text, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $accent;
+    transition: gap 0.3s ease;
+
+    &:hover { gap: 0.85rem; }
+
+    i { transition: transform 0.3s ease; }
+    &:hover i { transform: translateX(4px); }
+  }
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $primary, $secondary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  &__price-unit {
+    font-size: 0.8rem;
+    color: rgba($text, 0.5);
+  }
+
+  &__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F8F9FA;
+  }
+}
+
+.rg-fleet-card {
+  @extend .rg-card;
+
+  &__specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+
+    .spec-tag {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      background: rgba($primary, 0.06);
+      border-radius: 100px;
+      color: $secondary;
+    }
+  }
+
+  &__status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+
+    &.available {
+      background: rgba(34, 197, 94, 0.15);
+      color: #16a34a;
+    }
+
+    &.unavailable {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+    }
+  }
+}
+
+.rg-equipment-card {
+  @extend .rg-card;
+
+  &__price {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    color: $accent;
+    margin-top: auto;
+  }
+}
+
+.rg-testimonial-card {
+  @extend .rg-card;
+  padding: 2.5rem;
+
+  &::before {
+    content: '\201C';
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    font-family: $font-heading;
+    font-size: 5rem;
+    color: rgba($accent, 0.1);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  &::after { display: none; }
+
+  &:hover { transform: translateY(-4px); }
+
+  .rg-card__body { padding: 0; }
+
+  &__stars {
+    color: $accent;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  &__text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba($text, 0.8);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba($accent, 0.15);
+    }
+
+    .author-name {
+      font-weight: 600;
+      color: $heading;
+      font-size: 0.95rem;
+    }
+
+    .author-role {
+      font-size: 0.8rem;
+      color: rgba($text, 0.5);
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.rg-section-spacing {
+  padding-block: $section-py;
+}
+
+.container-premium {
+  @include container-premium;
+}
+
+.rg-divider {
+  width: 60px;
+  height: 2px;
+  background: $accent;
+  margin: 1.5rem 0;
+}
+
+.rg-mt-header {
+  margin-top: 0;
+}
+
+main {
+  padding-top: 0;
+}
+
+.bg-premium-light {
+  background: $bg;
+}
+
+.bg-premium-white {
+  background: #fff;
+}
+
+.bg-premium-dark {
+  background: $primary;
+  color: #fff;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, $accent, lighten(#C9A227, 15%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

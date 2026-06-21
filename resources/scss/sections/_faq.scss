@@ -1,0 +1,40 @@
+.rg-faq {
+  padding: $section-py 0;
+
+  .accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: $radius !important;
+    overflow: hidden;
+    box-shadow: $shadow-sm;
+  }
+
+  .accordion-button {
+    font-family: $font-body;
+    font-weight: 600;
+    font-size: 1rem;
+    color: $heading;
+    padding: 1.5rem 2rem;
+    background: #fff;
+    box-shadow: none;
+
+    &:not(.collapsed) {
+      background: #fff;
+      color: $accent;
+    }
+
+    &::after {
+      background-image: none;
+      content: '\F282';
+      font-family: 'bootstrap-icons';
+      font-size: 1rem;
+      color: $accent;
+    }
+  }
+
+  .accordion-body {
+    padding: 0 2rem 1.5rem;
+    color: rgba($text, 0.75);
+    line-height: 1.8;
+  }
+}

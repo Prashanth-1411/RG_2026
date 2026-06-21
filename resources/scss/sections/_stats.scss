@@ -1,0 +1,44 @@
+.rg-stats {
+  padding: 2rem 0;
+  background: #fff;
+  border-radius: var(--rg-radius, 16px);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(10, 22, 40, 0.08);
+  border-bottom: 1px solid rgba($primary, 0.06);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  &__item {
+    text-align: center;
+    padding: 1.5rem;
+
+    .stat-icon {
+      font-size: 2rem;
+      color: $accent;
+      margin-bottom: 1rem;
+    }
+
+    .stat-value {
+      @include heading-display;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: $heading;
+      line-height: 1;
+
+      .suffix {
+        font-size: 0.6em;
+        color: $accent;
+      }
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba($text, 0.6);
+      margin-top: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+  }
+}
