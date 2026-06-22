@@ -34,9 +34,9 @@ class ServiceFeatureSeeder extends Seeder
         ServiceFeature::create(['service_id' => 5, 'feature' => 'Body preparation', 'sort_order' => 3]);
         ServiceFeature::create(['service_id' => 5, 'feature' => 'Documentation assistance', 'sort_order' => 4]);
 
-        ServiceFeature::create(['service_id' => 6, 'feature' => 'Cremation coordination', 'sort_order' => 1]);
-        ServiceFeature::create(['service_id' => 6, 'feature' => 'Urn selection', 'sort_order' => 2]);
-        ServiceFeature::create(['service_id' => 6, 'feature' => 'Memorial service planning', 'sort_order' => 3]);
-        ServiceFeature::create(['service_id' => 6, 'feature' => 'Ash collection support', 'sort_order' => 4]);
+        ServiceFeature::create(['service_id' => 5, 'feature' => 'Cremation coordination', 'sort_order' => 1]);
+        ServiceFeature::create(['service_id' => 5, 'feature' => 'Urn selection', 'sort_order' => 2]);
+        ServiceFeature::create(['service_id' => 5, 'feature' => 'Memorial service planning', 'sort_order' => 3]);
+        ServiceFeature::create(['service_id' => 5, 'feature' => 'Ash collection support', 'sort_order' => 4]);
     }
 }
