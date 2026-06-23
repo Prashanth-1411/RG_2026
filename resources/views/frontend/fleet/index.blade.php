@@ -7,7 +7,7 @@
     'title' => $content['fleet_title'] ?? $page?->heading ?? 'Our Fleet',
     'description' => $content['fleet_subtitle'] ?? $page?->subheading ?? 'Premium funeral vans, advanced life support ambulances, medical equipment rental, and mortuary services.',
     'breadcrumb' => 'Fleet',
-    'heroImage' => $page?->hero_image ? asset('storage/' . $page->hero_image) : null,
+    'heroImage' => $page?->hero_image_url,
 ])
 
 <section class="rg-fleet">

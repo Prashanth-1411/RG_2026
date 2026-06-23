@@ -29,7 +29,8 @@ class EquipmentRentalResource extends Resource
                 Forms\Components\TextInput::make('name')->required()->maxLength(255)->live(onBlur: true)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
                 Forms\Components\TextInput::make('slug')->required()->maxLength(255),
-                Forms\Components\FileUpload::make('image')->image()->directory('equipment'),
+
+                Forms\Components\FileUpload::make('image')->image()->maxSize(2048)->imageResizeTargetWidth(1200)->imageResizeMode('cover')->directory('equipment'),
                 Forms\Components\TextInput::make('price')->numeric()->prefix('$'),
                 Forms\Components\Toggle::make('is_available'),
                 Forms\Components\TextInput::make('sort_order')->numeric()->default(0),

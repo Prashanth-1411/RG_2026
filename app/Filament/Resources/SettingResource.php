@@ -31,9 +31,10 @@ class SettingResource extends Resource
                         Forms\Components\TextInput::make('established_year'),
                         Forms\Components\Toggle::make('iso_certified'),
                     ]),
-                    Forms\Components\FileUpload::make('logo')->image()->directory('settings'),
-                    Forms\Components\FileUpload::make('favicon')->image()->directory('settings'),
+                    Forms\Components\FileUpload::make('logo')->image()->maxSize(5120)->imageResizeTargetWidth(300)->imageResizeMode('contain')->directory('settings'),
+                    Forms\Components\FileUpload::make('favicon')->image()->maxSize(5120)->imageResizeTargetWidth(64)->imageResizeMode('contain')->directory('settings'),
                     Forms\Components\TextInput::make('logo_width')->numeric()->default(180),
+                    Forms\Components\TextInput::make('logo_height')->numeric()->default(null)->helperText('Leave empty for auto-height'),
                 ]),
                 Forms\Components\Tabs\Tab::make('Contact Information')->schema([
                     Forms\Components\Grid::make(2)->schema([
@@ -71,7 +72,7 @@ class SettingResource extends Resource
                 Tables\Columns\TextColumn::make('company_name')->searchable(),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('phone_primary'),
-                Tables\Columns\ImageColumn::make('logo'),
+                Tables\Columns\ImageColumn::make('logo_url')->label('Logo'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

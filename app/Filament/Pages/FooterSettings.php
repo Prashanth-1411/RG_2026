@@ -40,8 +40,8 @@ class FooterSettings extends Page implements HasForms
                 Tabs::make('Footer Settings')->tabs([
                     Tabs\Tab::make('General')->schema([
                         Grid::make(2)->schema([
-                            FileUpload::make('logo')->label('Logo')->image()->directory('logos'),
-                            FileUpload::make('favicon')->label('Favicon')->image()->directory('favicons'),
+                            FileUpload::make('logo')->label('Logo')->image()->maxSize(5120)->imageResizeTargetWidth(300)->imageResizeMode('contain')->directory('logos'),
+                            FileUpload::make('favicon')->label('Favicon')->image()->maxSize(5120)->imageResizeTargetWidth(64)->imageResizeMode('contain')->directory('favicons'),
                             TextInput::make('company_name')->label('Company Name')->required(),
                             TextInput::make('tagline')->label('Tagline'),
                         ]),

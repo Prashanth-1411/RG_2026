@@ -9,7 +9,7 @@
         $pageTitle = $seo?->meta_title ?? ($content['site_name'] ?? $site?->company_name ?? 'R.G. Ambulance Service');
         $pageDesc = $seo?->meta_description ?? ($content['site_description'] ?? $site?->tagline ?? '');
         $pageKeywords = $seo?->meta_keywords ?? '';
-        $ogImage = $seo?->og_image ?? ($site?->logo ? asset('storage/' . $site->logo) : '');
+        $ogImage = $seo?->og_image ?? $site?->logo_url ?? '';
     @endphp
 
     <title>@yield('title', $pageTitle)</title>
@@ -24,7 +24,7 @@
     @endif
 
     @if($site?->favicon)
-        <link rel="icon" href="{{ asset('storage/' . $site->favicon) }}">
+        <link rel="icon" href="{{ $site->favicon_url }}">
     @endif
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
 <body>
     <div id="page-loader">
         <div class="loader-brand">
-            <img src="{{ asset('storage/' . $site->logo) }}" alt="{{ $site->company_name ?? 'Loading...' }}" style="max-height:60px;">
+            <img src="{{ $site->logo_url }}" alt="{{ $site->company_name ?? 'Loading...' }}" style="max-height:60px;">
             <div class="loader-line"></div>
         </div>
     </div>

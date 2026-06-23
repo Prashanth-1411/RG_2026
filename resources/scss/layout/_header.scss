@@ -16,6 +16,10 @@
     .logo-text {
       color: $heading;
     }
+
+    .nav-link {
+      color: $heading;
+    }
   }
 
   &__top {
@@ -41,6 +45,9 @@
   &__bar {
     padding: 1.25rem 0;
     transition: all 0.5s ease;
+    background: rgba($primary, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   &__logo {
@@ -49,16 +56,6 @@
       width: auto;
       transition: height 0.3s ease;
       display: block;
-    }
-
-    .logo-text {
-      @include heading-display;
-      font-size: 1.25rem;
-      color: #fff;
-      line-height: 1.2;
-      white-space: nowrap;
-
-      span { color: $accent; }
     }
 
     &-bg {
@@ -70,7 +67,7 @@
     .logo-text {
       @include heading-display;
       font-size: 1.5rem;
-      color: $heading;
+      color: #fff;
       line-height: 1.2;
 
       span { color: $accent; }
@@ -83,7 +80,7 @@
       font-weight: 500;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: $heading;
+      color: #fff;
       padding: 0.5rem 1.25rem !important;
       position: relative;
 
@@ -183,10 +180,16 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: $heading;
+      background: #fff;
       margin: 5px 0;
       transition: all 0.3s ease;
     }
+  }
+}
+
+.rg-header.scrolled {
+  .rg-header__toggle span {
+    background: $heading;
   }
 }
 

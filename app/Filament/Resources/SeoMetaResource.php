@@ -43,7 +43,7 @@ class SeoMetaResource extends Resource
             Forms\Components\TextInput::make('meta_keywords'),
             Forms\Components\TextInput::make('og_title')->label('OG Title'),
             Forms\Components\Textarea::make('og_description')->label('OG Description')->rows(2),
-            Forms\Components\FileUpload::make('og_image')->image()->directory('seo'),
+            Forms\Components\FileUpload::make('og_image')->image()->maxSize(1024)->imageResizeTargetWidth(1200)->imageResizeMode('cover')->directory('seo'),
             Forms\Components\TextInput::make('canonical_url')->url(),
             Forms\Components\Textarea::make('structured_data')->label('Structured Data (JSON-LD)')->rows(4),
         ]);

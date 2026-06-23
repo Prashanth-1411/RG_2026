@@ -7,7 +7,7 @@
     <p class="rg-testimonial-card__text">"{{ $testimonial->content }}"</p>
     <div class="rg-testimonial-card__author">
         @if($testimonial->image)
-            <img src="{{ str_starts_with($testimonial->image, 'http') ? $testimonial->image : asset('storage/' . $testimonial->image) }}" alt="{{ $testimonial->name }}">
+            <img src="{{ $testimonial->image_url }}" alt="{{ $testimonial->name }}">
         @else
             <div class="rg-card__avatar">
                 {{ strtoupper(substr($testimonial->name, 0, 1)) }}

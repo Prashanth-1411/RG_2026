@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasImageBlobs;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class EquipmentRental extends Model implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasImageBlobs, InteractsWithMedia;
 
     protected $fillable = [
         'name', 'slug', 'description', 'image', 'price',
@@ -31,10 +32,13 @@ class EquipmentRental extends Model implements HasMedia
 
     public function imageUrl(): ?string
     {
-        if ($this->image) {
-            return str_starts_with($this->image, 'http') ? $this->image : asset('storage/' . $this->image);
-        }
-        $url = $this->getFirstMediaUrl('image');
-        return $url ?: null;
+        return $this->getImageUrl('image');
+    }
+
+    protected function imageBlobFields(): array
+    {
+        return [
+            'image' => ['image_blob', 'image_mime'],
+        ];
     }
 }

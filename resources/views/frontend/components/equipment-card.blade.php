@@ -7,6 +7,7 @@
     </div>
     <div class="rg-card__body d-flex flex-column">
         <h3 class="rg-card__title">{{ $equipment->name }}</h3>
+
         <p class="rg-card__text">{{ Str::limit($equipment->description, 100) }}</p>
         @if($equipment->price)
             <div class="rg-equipment-card__price">₹{{ number_format($equipment->price, 0) }}<small class="text-muted-premium fs-6">/day</small></div>

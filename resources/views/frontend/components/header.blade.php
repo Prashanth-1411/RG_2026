@@ -29,7 +29,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <a href="{{ route('frontend.home') }}" class="rg-header__logo text-decoration-none">
                     <span class="rg-header__logo-bg">
-                        <img src="{{ asset('storage/' . $site->logo) }}" alt="{{ $site->company_name }}" style="max-width: {{ $site->logo_width ?? 200 }}px">
+                        <img src="{{ $site->logo_url }}" alt="{{ $site->company_name }}" style="max-width: {{ $site->logo_width ?? 200 }}px{{ $site->logo_height ? '; max-height: ' . $site->logo_height . 'px' : '' }}">
                         <span class="logo-text"><span>R.G.</span> Ambulance Service</span>
                     </span>
                 </a>

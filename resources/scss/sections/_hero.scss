@@ -5,6 +5,7 @@
   align-items: center;
   overflow: hidden;
   background: $primary;
+  padding-top: 140px;
 
   &__bg {
     position: absolute;
@@ -12,18 +13,6 @@
 
     img, video {
       @include image-cover;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba($primary, 0.92) 0%,
-        rgba($secondary, 0.75) 50%,
-        rgba($primary, 0.85) 100%
-      );
     }
   }
 
@@ -39,7 +28,7 @@
   &__content {
     position: relative;
     z-index: 2;
-    padding: 5rem 0 3rem;
+    padding: 3rem 0 3rem;
     color: #fff;
   }
 

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasImageBlobs;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Fleet extends Model implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasImageBlobs, InteractsWithMedia;
 
     protected $fillable = [
         'fleet_category_id', 'name', 'slug', 'category', 'description', 'image',
@@ -36,15 +37,18 @@ class Fleet extends Model implements HasMedia
 
     public function mainImageUrl(): ?string
     {
-        if ($this->image) {
-            return str_starts_with($this->image, 'http') ? $this->image : asset('storage/' . $this->image);
-        }
-        $url = $this->getFirstMediaUrl('main_image');
-        return $url ?: null;
+        return $this->getImageUrl('image');
     }
 
     public function galleryUrls(): array
     {
         return $this->getMedia('gallery')->map(fn ($m) => $m->getUrl())->toArray();
+    }
+
+    protected function imageBlobFields(): array
+    {
+        return [
+            'image' => ['image_blob', 'image_mime'],
+        ];
     }
 }

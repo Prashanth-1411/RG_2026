@@ -7,7 +7,7 @@
     'title' => $content['about_title'] ?? $page?->heading ?? 'About Us',
     'description' => $content['about_subtitle'] ?? $page?->subheading ?? '',
     'breadcrumb' => 'About',
-    'heroImage' => $page?->hero_image ? asset('storage/' . $page->hero_image) : null,
+    'heroImage' => $page?->hero_image_url,
 ])
 
 <section class="rg-about" style="padding-top:0;">
@@ -138,7 +138,7 @@
                 <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in">
                     <div class="rg-card">
                         @if($cert->image)
-                            <div class="rg-card__image" style="aspect-ratio:1;"><img src="{{ asset('storage/' . $cert->image) }}" alt="{{ $cert->title }}"></div>
+                            <div class="rg-card__image" style="aspect-ratio:1;"><img src="{{ $cert->image_url }}" alt="{{ $cert->title }}"></div>
                         @endif
                         <div class="rg-card__body text-center p-3">
                             <h6 class="mb-0">{{ $cert->title }}</h6>

@@ -48,8 +48,8 @@ class ServiceResource extends Resource
                     Forms\Components\RichEditor::make('description')->columnSpanFull(),
                 ]),
                 Forms\Components\Tabs\Tab::make('Media')->schema([
-                    Forms\Components\FileUpload::make('image')->image()->directory('services'),
-                    Forms\Components\FileUpload::make('banner_image')->image()->directory('services/banners'),
+                    Forms\Components\FileUpload::make('image')->image()->maxSize(2048)->imageResizeTargetWidth(1200)->imageResizeMode('cover')->directory('services'),
+                    Forms\Components\FileUpload::make('banner_image')->image()->maxSize(2048)->imageResizeTargetWidth(1920)->imageResizeMode('cover')->directory('services/banners'),
                 ]),
                 Forms\Components\Tabs\Tab::make('Features')->schema([
                     Forms\Components\Repeater::make('features')
@@ -74,7 +74,7 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image'),
                 Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('service_type')->badge(),
                 Tables\Columns\IconColumn::make('is_featured')->boolean(),

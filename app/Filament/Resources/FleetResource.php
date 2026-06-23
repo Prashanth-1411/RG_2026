@@ -30,7 +30,7 @@ class FleetResource extends Resource
                     ->live(onBlur: true)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
                 Forms\Components\TextInput::make('slug')->required(),
-                Forms\Components\FileUpload::make('image')->image()->directory('fleet'),
+                Forms\Components\FileUpload::make('image')->image()->maxSize(2048)->imageResizeTargetWidth(1200)->imageResizeMode('cover')->directory('fleet'),
                 Forms\Components\TextInput::make('category')->required(),
                 Forms\Components\Toggle::make('is_available')->default(true),
                 Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
@@ -48,7 +48,7 @@ class FleetResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image'),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('category'),
                 Tables\Columns\IconColumn::make('is_available')->boolean(),

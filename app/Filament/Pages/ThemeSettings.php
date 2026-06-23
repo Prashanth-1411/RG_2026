@@ -91,7 +91,7 @@ class ThemeSettings extends Page implements HasForms
                         Tabs\Tab::make('Hero')
                             ->schema([
                                 Grid::make(2)->schema([
-                                    FileUpload::make('hero_background')->label('Hero Background Image')->image()->directory('theme'),
+                                    FileUpload::make('hero_background')->label('Hero Background Image')->image()->maxSize(2048)->imageResizeTargetWidth(1920)->imageResizeMode('cover')->directory('theme'),
                                     TextInput::make('hero_video')->label('Hero Background Video URL')->helperText('MP4 or YouTube embed URL'),
                                 ]),
                             ]),

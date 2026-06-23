@@ -35,7 +35,7 @@ class HeroSlideResource extends Resource
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()->maxSize(2048)->imageResizeTargetWidth(1920)->imageResizeMode('cover'),
                 Forms\Components\TextInput::make('video')
                     ->maxLength(255)
                     ->default(null),
@@ -68,7 +68,7 @@ class HeroSlideResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('badge_text')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image'),
                 Tables\Columns\TextColumn::make('video')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('button_text')

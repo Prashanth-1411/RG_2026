@@ -46,7 +46,7 @@ class TestimonialResource extends Resource
                     ->numeric()
                     ->default(5),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()->maxSize(1024)->imageCropAspectRatio('1:1')->imageResizeTargetWidth(200)->imageResizeMode('cover'),
                 Forms\Components\TextInput::make('verification_url')
                     ->maxLength(255)
                     ->default(null),
@@ -76,7 +76,7 @@ class TestimonialResource extends Resource
                 Tables\Columns\TextColumn::make('rating')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image'),
                 Tables\Columns\TextColumn::make('verification_url')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_featured')

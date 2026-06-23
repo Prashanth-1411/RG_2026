@@ -21,7 +21,7 @@
                 <div class="swiper-slide">
                     <div class="rg-hero__bg">
                         @if($slide->image)
-                            <img src="{{ str_starts_with($slide->image, 'http') ? $slide->image : asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}">
+                            <img src="{{ $slide->image_url }}" alt="{{ $slide->title }}">
                         @elseif($slide->video)
                             <video autoplay muted loop playsinline><source src="{{ $slide->video }}" type="video/mp4"></video>
                         @endif

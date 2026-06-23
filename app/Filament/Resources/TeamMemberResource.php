@@ -35,7 +35,7 @@ class TeamMemberResource extends Resource
                     Forms\Components\Textarea::make('description')->columnSpanFull(),
                 ]),
                 Forms\Components\Tabs\Tab::make('Photo')->schema([
-                    Forms\Components\FileUpload::make('image')->image()->directory('team'),
+                    Forms\Components\FileUpload::make('image')->image()->maxSize(1024)->imageCropAspectRatio('1:1')->imageResizeTargetWidth(400)->imageResizeMode('cover')->directory('team'),
                 ]),
                 Forms\Components\Tabs\Tab::make('Social Media')->schema([
                     Forms\Components\Grid::make(2)->schema([
@@ -53,7 +53,7 @@ class TeamMemberResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image')->circular(),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image')->circular(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('designation')->searchable(),
                 Tables\Columns\TextColumn::make('email')->searchable(),

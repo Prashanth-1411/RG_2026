@@ -27,10 +27,10 @@ class FleetCategoryResource extends Resource
                 Forms\Components\TextInput::make('name')->required()->live(onBlur: true)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
                 Forms\Components\TextInput::make('slug')->required(),
-                Forms\Components\FileUpload::make('image')->image()->directory('fleet-categories'),
+                Forms\Components\FileUpload::make('image')->image()->maxSize(5120)->imageResizeTargetWidth(1200)->imageResizeMode('cover')->directory('fleet-categories'),
                 Forms\Components\Select::make('type')->options(['fleet' => 'Fleet', 'mortuary' => 'Mortuary']),
                 Forms\Components\TextInput::make('icon')->helperText('Bootstrap icon name'),
-                Forms\Components\TextInput::make('subtitle'),
+                Forms\Components\TextInput::make('subtitle')->label('Sub Heading'),
                 Forms\Components\Toggle::make('status')->default(true),
                 Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
             ]),
@@ -41,7 +41,7 @@ class FleetCategoryResource extends Resource
     public static function table(Table $table): Table
     {
         return $table->columns([
-            Tables\Columns\ImageColumn::make('image'),
+            Tables\Columns\ImageColumn::make('image_url')->label('Image'),
             Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
             Tables\Columns\TextColumn::make('type')->badge(),
             Tables\Columns\IconColumn::make('status')->boolean(),

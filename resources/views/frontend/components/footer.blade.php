@@ -3,7 +3,7 @@
         <div class="row g-4">
             <div class="col-lg-4" data-aos="fade-up">
                 <div class="rg-footer__brand">
-                    <img src="{{ asset('storage/' . $site->logo) }}" alt="{{ $site->company_name }}" class="footer-logo" style="max-width:220px;">
+                    <img src="{{ $site->logo_url }}" alt="{{ $site->company_name }}" class="footer-logo" style="max-width:220px;">
                     <p>{{ $site->footer_description ?? $site->tagline ?? '' }}</p>
                         <div class="rg-footer__social">
                             @if($site?->facebook)<a href="{{ $site->facebook }}" target="_blank" rel="noopener"><i class="bi bi-facebook animate-float" style="display:inline-block;"></i></a>@endif

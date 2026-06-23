@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasImageBlobs;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Service extends Model implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasImageBlobs, InteractsWithMedia;
 
     protected $fillable = [
         'title', 'slug', 'short_description', 'description', 'icon', 'image', 'banner_image',
@@ -49,17 +50,19 @@ class Service extends Model implements HasMedia
 
     public function imageUrl(): ?string
     {
-        if ($this->image) {
-            return str_starts_with($this->image, 'http') ? $this->image : asset('storage/' . $this->image);
-        }
-        return $this->getFirstMediaUrl('gallery') ?: null;
+        return $this->getImageUrl('image');
     }
 
     public function bannerUrl(): ?string
     {
-        if ($this->banner_image) {
-            return str_starts_with($this->banner_image, 'http') ? $this->banner_image : asset('storage/' . $this->banner_image);
-        }
-        return $this->imageUrl();
+        return $this->getImageUrl('banner_image') ?: $this->imageUrl();
+    }
+
+    protected function imageBlobFields(): array
+    {
+        return [
+            'image' => ['image_blob', 'image_mime'],
+            'banner_image' => ['banner_image_blob', 'banner_image_mime'],
+        ];
     }
 }

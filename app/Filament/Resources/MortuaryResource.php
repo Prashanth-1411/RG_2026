@@ -29,7 +29,7 @@ class MortuaryResource extends Resource
                 Forms\Components\Grid::make(2)->schema([
                     Forms\Components\TextInput::make('title')->required()->maxLength(255),
                     Forms\Components\TextInput::make('slug')->required()->maxLength(255),
-                    Forms\Components\FileUpload::make('image')->image()->directory('mortuaries'),
+                    Forms\Components\FileUpload::make('image')->image()->maxSize(5120)->imageResizeTargetWidth(1200)->imageResizeMode('cover')->directory('mortuaries'),
                     Forms\Components\TextInput::make('sort_order')->required()->numeric()->default(0),
                 ]),
                 Forms\Components\Textarea::make('description')->columnSpanFull(),
@@ -41,7 +41,7 @@ class MortuaryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image'),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')

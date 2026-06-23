@@ -24,6 +24,7 @@
     </div>
     <div class="rg-card__body d-flex flex-column">
         <h3 class="rg-card__title rg-card__title--sm">{{ $name }}</h3>
+
         @if($price)
             <div class="rg-equipment-card__price mb-2">₹{{ number_format($price, 0) }}<small class="rg-card__price-unit">/day</small></div>
         @endif

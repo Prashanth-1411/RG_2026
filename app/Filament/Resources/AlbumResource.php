@@ -32,7 +32,7 @@ class AlbumResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('cover_image')
-                    ->image(),
+                    ->image()->maxSize(2048)->imageResizeTargetWidth(1200)->imageResizeMode('cover'),
                 Forms\Components\TextInput::make('sort_order')
                     ->required()
                     ->numeric()
@@ -48,7 +48,7 @@ class AlbumResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('cover_image'),
+                Tables\Columns\ImageColumn::make('cover_image_url')->label('Cover'),
                 Tables\Columns\TextColumn::make('sort_order')
                     ->numeric()
                     ->sortable(),

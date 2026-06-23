@@ -32,7 +32,7 @@ class CertificateResource extends Resource
                     ->default(null),
                 Forms\Components\DatePicker::make('date_issued'),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()->maxSize(2048)->imageResizeTargetWidth(1200)->imageResizeMode('cover'),
                 Forms\Components\TextInput::make('type')
                     ->required(),
                 Forms\Components\TextInput::make('sort_order')
@@ -55,7 +55,7 @@ class CertificateResource extends Resource
                 Tables\Columns\TextColumn::make('date_issued')
                     ->date()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image'),
                 Tables\Columns\TextColumn::make('type'),
                 Tables\Columns\TextColumn::make('sort_order')
                     ->numeric()

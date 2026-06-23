@@ -36,7 +36,7 @@ class PageResource extends Resource
                 Forms\Components\Textarea::make('content')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('hero_image')
-                    ->image(),
+                    ->image()->maxSize(2048)->imageResizeTargetWidth(1920)->imageResizeMode('cover'),
                 Forms\Components\TextInput::make('hero_video')
                     ->maxLength(255)
                     ->default(null),
@@ -55,7 +55,7 @@ class PageResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('subheading')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('hero_image'),
+                Tables\Columns\ImageColumn::make('hero_image_url')->label('Hero'),
                 Tables\Columns\TextColumn::make('hero_video')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('status')

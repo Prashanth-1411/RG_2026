@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasImageBlobs;
 use Illuminate\Database\Eloquent\Model;
 
 class BlogPost extends Model
 {
+    use HasImageBlobs;
+
     protected $fillable = [
         'title', 'slug', 'content', 'excerpt', 'featured_image', 'image',
         'category_id', 'tags', 'author', 'reading_time', 'views',
@@ -21,5 +24,13 @@ class BlogPost extends Model
     public function category()
     {
         return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    protected function imageBlobFields(): array
+    {
+        return [
+            'featured_image' => ['featured_image_blob', 'featured_image_mime'],
+            'image' => ['image_blob', 'image_mime'],
+        ];
     }
 }

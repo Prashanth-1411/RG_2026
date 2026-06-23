@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasImageBlobs;
 use Illuminate\Database\Eloquent\Model;
 
 class FleetCategory extends Model
 {
+    use HasImageBlobs;
+
     protected $fillable = [
         'name', 'slug', 'subtitle', 'description', 'image', 'type', 'sort_order', 'status',
     ];
@@ -22,9 +25,13 @@ class FleetCategory extends Model
 
     public function imageUrl(): ?string
     {
-        if (!$this->image) {
-            return null;
-        }
-        return str_starts_with($this->image, 'http') ? $this->image : asset('storage/' . $this->image);
+        return $this->getImageUrl('image');
+    }
+
+    protected function imageBlobFields(): array
+    {
+        return [
+            'image' => ['image_blob', 'image_mime'],
+        ];
     }
 }

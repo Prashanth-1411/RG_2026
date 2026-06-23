@@ -7,7 +7,7 @@
     'title' => $content['services_title'] ?? $page?->heading ?? 'Our Services',
     'description' => $content['services_subtitle'] ?? $page?->subheading ?? 'Comprehensive emergency medical transport services across India with dedicated North Chennai coverage.',
     'breadcrumb' => 'Services',
-    'heroImage' => $page?->hero_image ? asset('storage/' . $page->hero_image) : null,
+    'heroImage' => $page?->hero_image_url,
 ])
 
 <section class="rg-services">

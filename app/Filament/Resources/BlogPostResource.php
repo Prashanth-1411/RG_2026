@@ -36,9 +36,9 @@ class BlogPostResource extends Resource
                 Forms\Components\Textarea::make('excerpt')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('featured_image')
-                    ->image(),
+                    ->image()->maxSize(2048)->imageResizeTargetWidth(1200)->imageResizeMode('cover'),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()->maxSize(2048)->imageResizeTargetWidth(1200)->imageResizeMode('cover'),
                 Forms\Components\TextInput::make('category_id')
                     ->numeric()
                     ->default(null),
@@ -75,8 +75,8 @@ class BlogPostResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('featured_image'),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('featured_image_url')->label('Featured'),
+                Tables\Columns\ImageColumn::make('image_url')->label('Image'),
                 Tables\Columns\TextColumn::make('category_id')
                     ->numeric()
                     ->sortable(),
