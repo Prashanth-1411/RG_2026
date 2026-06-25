@@ -3,11 +3,15 @@
     "framework": null,
     "builds": [
         {
-            "src": "/api/index.php",
+            "src": "/api/*.php",
             "use": "vercel-php@0.6.2"
         }
     ],
     "routes": [
+        {
+            "src": "/api/ping",
+            "dest": "/api/ping.php"
+        },
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
